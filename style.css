@@ -1,0 +1,17 @@
+.boardContainer {
+    display: grid;
+    width: 600px;
+    height: 600px;
+    grid-template: repeat(3, 1fr) / repeat(3, 1fr) ;
+    background-color: aliceblue;
+    border: 6px;
+    
+}
+
+
+.box {
+
+    border: 6px solid;
+    font-size: 1000%;
+    text-align: center;
+}
