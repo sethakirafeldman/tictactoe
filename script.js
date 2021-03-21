@@ -5,10 +5,12 @@ let playerX = [""];
 let playerO = [""];
 
 let generateBoard = function(){
-    for (i=0; i < 8; i++ ){
-       let gameDiv =  getElementById("gameBoard");
-       div = document.createElement("div");
-        document.gameDiv.appendChild(div);
+    for (i=0; i < 9; i++ ){
+      let newDiv = document.createElement("div");
+      document.getElementById("gameBoard").appendChild(newDiv);
+    newDiv.setAttribute("onclick", "clicker(i)" );
+      newDiv.setAttribute("class", "box");
+      newDiv.setAttribute("id", i)
     }
 
 }
