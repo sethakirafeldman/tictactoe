@@ -8,7 +8,7 @@ let generateBoard = function(){
     for (i=0; i < 9; i++ ){
       let newDiv = document.createElement("div");
       document.getElementById("gameBoard").appendChild(newDiv);
-    newDiv.setAttribute("onclick", "clicker(i)" );
+      newDiv.setAttribute("onclick", "clicker("+i+")");
       newDiv.setAttribute("class", "box");
       newDiv.setAttribute("id", i)
     }
