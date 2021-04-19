@@ -4,6 +4,8 @@ let playerX = [""];
 
 let playerO = [""];
 
+
+
 let generateBoard = function(){
     for (i=0; i < 9; i++ ){
       let newDiv = document.createElement("div");
@@ -15,12 +17,16 @@ let generateBoard = function(){
 
 }
 
-const objectFactory = function(type, player) {
-  this.testLog = () => console.log("testing factory");
-  this.type = type;
-  this.player = player;
+const objectFactory = (player,select) =>  {
+  const printInfo = () => console.log("test: ");
+  return { player, select, printInfo };
+
 };  
 
+const playerSelect = objectFactory('Player One','X')
+console.log(playerSelect.player + playerSelect.select);
+
+playerSelect.printInfo();
 
 let clicker = function(i) {
     let selectedBox = document.getElementById(i);
