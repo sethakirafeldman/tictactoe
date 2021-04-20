@@ -18,20 +18,23 @@ let generateBoard = function(){
 }
 
 const objectFactory = (player,select) =>  {
-  const printInfo = () => console.log("test: ");
-  return { player, select, printInfo };
+
+  return { player, select };
 
 };  
 
 const playerSelect = objectFactory('Player One','X')
-console.log(playerSelect.player + playerSelect.select);
-
-playerSelect.printInfo();
 
 let clicker = function(i) {
     let selectedBox = document.getElementById(i);
     //in here the selection should pass into the factory to create the x/o object.
-    this.testLog;
-    selectedBox.innerHTML = "X";
+    selectedBox.innerHTML = playerSelect.select;
+    console.log(selectedBox);
     //selectedBox.innerHtml = this.type;
 }
+
+
+/* possible winners: 012 048 036 147 258 345 679
+
+need something that can scan through the dom an determine the first player
+to reach 3 in a row of any of these. loop through 0-8 divs to check if winner. 
