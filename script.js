@@ -4,9 +4,7 @@ let playerX = [""];
 
 let playerO = [""];
 
-
-
-let generateBoard = function(){
+const generateBoard = () => {
     for (i=0; i < 9; i++ ){
       let newDiv = document.createElement("div");
       document.getElementById("gameBoard").appendChild(newDiv);
@@ -23,18 +21,26 @@ const objectFactory = (player,select) =>  {
 
 };  
 
-const playerSelect = objectFactory('Player One','X')
+const player1Select = objectFactory('Player One','X')
+const player2Select = objectFactory('Player Two', 'O');
 
 let clicker = function(i) {
-    let selectedBox = document.getElementById(i);
-    //in here the selection should pass into the factory to create the x/o object.
-    selectedBox.innerHTML = playerSelect.select;
-    console.log(selectedBox);
-    //selectedBox.innerHtml = this.type;
-}
+  
+      let selectedBox = document.getElementById(i);
+      if (selectedBox.innerHTML.indexOf("X") != true) {
+      //in here the selection should pass into the factory to create the x/o object.
+      selectedBox.innerHTML = player1Select.select;
+      console.log(selectedBox);
+      }
+  
+  else {
+    console.log("else");
+
+  }
+  }
 
 
 /* possible winners: 012 048 036 147 258 345 679
 
 need something that can scan through the dom an determine the first player
-to reach 3 in a row of any of these. loop through 0-8 divs to check if winner. 
+to reach 3 in a row of any of these. loop through 0-8 divs to check if winner. */
