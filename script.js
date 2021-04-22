@@ -15,6 +15,29 @@ const generateBoard = () => {
 
 }
 
+/*
+need something that can scan through the dom an determine the first player
+to reach 3 in a row of any of these. loop through 0-8 divs to check if winner. */
+const winners = {
+  one: [0,1,2],
+  two: [3,4,5],
+  three: [6,7,8],
+  four: [0,3,6],
+  five: [0,4,8],
+  six: [1,4,7],
+  seven: [2,5,8],
+  eight: [2,4,6]
+ };
+
+
+
+const checkWinner = () => {
+    for (let j=0; j<8; j++) {
+
+    }
+
+}
+
 const objectFactory = (player,select) =>  {
 
   return { player, select };
@@ -35,12 +58,11 @@ let clicker = function(i) {
   
   else {
     console.log("else");
-
-  }
   }
 
+  document.getElementById("")
 
-/* possible winners: 012 048 036 147 258 345 679
+  }
 
-need something that can scan through the dom an determine the first player
-to reach 3 in a row of any of these. loop through 0-8 divs to check if winner. */
+
+
