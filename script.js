@@ -11,9 +11,11 @@ const generateBoard = () => {
       newDiv.setAttribute("onclick", "clicker("+i+")");
       newDiv.setAttribute("class", "box");
       newDiv.setAttribute("id", i);
+
     }
-    
   }
+
+
 
 /*
 need something that can scan through the dom an determine the first player
@@ -38,28 +40,31 @@ const checkWinner = () => {
 
 }
 
-const objectFactory = (player,select) =>  {
+const constructor = (player,select) =>  {
 
+   this.player = player;
+   this.select = select;
+
+  console.log(player + select);
   return { player, select };
 
 };  
 
-let getPlayerInput = prompt("X or O?");
-
-select = getPlayerInput.toUpperCase();
-
+const player1Select = constructor(player,select);
 
 //const player1Select = objectFactory('Player One','X')
-const player1Select = objectFactory("Player One", select);
-const player2Select = objectFactory('Player Two', 'O');
+//const player1Select = objectFactory("Player One",select);
+
+//const player2Select = objectFactory('Player Two', 'O');
 
 let clicker = function(i) {
   
       let selectedBox = document.getElementById(i);
         if (selectedBox.innerHTML.indexOf("X") != true) {
         //in here the selection should pass into the factory to create the x/o object.
-        selectedBox.innerHTML = player1Select.select;
+        selectedBox.innerHTML = player1Select[0,1];
         console.log(selectedBox);
+        
         }
     
   else {
