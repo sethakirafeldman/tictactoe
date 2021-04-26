@@ -1,9 +1,3 @@
-
-
-let playerX = [""];
-
-let playerO = [""];
-
 const generateBoard = () => {
     for (i=0; i < 9; i++ ){
       let newDiv = document.createElement("div");
@@ -13,8 +7,12 @@ const generateBoard = () => {
       newDiv.setAttribute("id", i);
 
     }
+    document.getElementById("selectX").addEventListener('click', function()
+  {let player1Select = playerFactory('player1','X'); } );
+  // need this to change based on selection chosen. 
   }
 
+  
 
 
 /*
@@ -40,20 +38,19 @@ const checkWinner = () => {
 
 }
 
-const constructor = (player,select) =>  {
 
-   this.player = player;
-   this.select = select;
+
+
+
+
+const playerFactory = (player,select) =>  {
 
   console.log(player + select);
   return { player, select };
 
 };  
 
-const player1Select = constructor(player,select);
-
-//const player1Select = objectFactory('Player One','X')
-//const player1Select = objectFactory("Player One",select);
+//const player1Select = playerFactory('player1',select)
 
 //const player2Select = objectFactory('Player Two', 'O');
 
@@ -62,7 +59,7 @@ let clicker = function(i) {
       let selectedBox = document.getElementById(i);
         if (selectedBox.innerHTML.indexOf("X") != true) {
         //in here the selection should pass into the factory to create the x/o object.
-        selectedBox.innerHTML = player1Select[0,1];
+        selectedBox.innerHTML = player1Select.select;
         console.log(selectedBox);
         
         }
