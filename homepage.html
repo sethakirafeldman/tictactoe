@@ -5,9 +5,13 @@
      <script src ="script.js"></script>
     <title>Tic Tac Toe</title>
 </head>
-<body onload="generateBoard()">
+<body onload="generateBoard(),">
     <div  class ="boardContainer" id ="gameBoard"></div>
-    <div class = "promptContainer" id="promptMe"></div>
+    <div class = "promptContainer" id="promptMe">
+        <button id = "selectX">Choose X</button>
+        <button id = "selectO" onclick = "constructor('Player One', 'O')">Choose O</button>
+
+    </div>
 
 </body>
 </html>
