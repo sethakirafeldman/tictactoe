@@ -8,9 +8,9 @@ const generateBoard = () => {
 
     }
     document.getElementById("selectX").addEventListener('click', function()
-      {let player1Select = playerFactory('player1','X'); } );
+      {const playerSelect = playerFactory('player1','X'); } );
     document.getElementById("selectO").addEventListener('click', function()
-      {let player1Select = playerFactory('player1','O'); } );
+      {const playerSelect = playerFactory('player1','O'); } );
 
   // need this to change based on selection chosen. 
   }
@@ -32,8 +32,6 @@ const winners = {
   eight: [2,4,6]
  };
 
-
-
 const checkWinner = () => {
     for (let j=0; j<8; j++) {
 
@@ -42,29 +40,29 @@ const checkWinner = () => {
 }
 
 const playerFactory = (player,select) =>  {
-
   console.log(player, select);
   return { player, select };
 
 };  
 
-//const player1Select = playerFactory('player1',select)
+//const player1Select = playerFactory('player1', select)
+
 
 //const player2Select = objectFactory('Player Two', 'O');
 
 let clicker = function(i) {
   
       let selectedBox = document.getElementById(i);
-        if (selectedBox.innerHTML.indexOf("X") != true) {
-        //in here the selection should pass into the factory to create the x/o object.
-        selectedBox.innerHTML = player1Select.select;
+       // if (selectedBox.innerHTML.indexOf("X") != true) {
+      // this should grab player/select parameters from whatever the player chooses and pass into the innerHTML.
+       selectedBox.innerHTML = playerSelect[0,1];
         console.log(selectedBox);
         
-        }
+        //}
     
-  else {
-    console.log("else");
-  }
+ // else {
+    //console.log("else");
+ // }
 
   document.getElementById("")
 
