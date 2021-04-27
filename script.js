@@ -14,10 +14,6 @@ const generateBoard = () => {
 
   // need this to change based on selection chosen. 
   }
-
-  
-
-
 /*
 need something that can scan through the dom an determine the first player
 to reach 3 in a row of any of these. loop through 0-8 divs to check if winner. */
@@ -41,6 +37,7 @@ const checkWinner = () => {
 
 const playerFactory = (player,select) =>  {
   console.log(player, select);
+  let playerSelect= player.select;
   return { player, select };
 
 };  
@@ -55,9 +52,10 @@ let clicker = function(i) {
       let selectedBox = document.getElementById(i);
        // if (selectedBox.innerHTML.indexOf("X") != true) {
       // this should grab player/select parameters from whatever the player chooses and pass into the innerHTML.
-       selectedBox.innerHTML = playerSelect[0,1];
-        console.log(selectedBox);
-        
+      if ( playerSelect.select ==="X") { 
+      selectedBox.innerHTML = "";
+      console.log(selectedBox);
+      }
         //}
     
  // else {
