@@ -8,7 +8,10 @@ const generateBoard = () => {
 
     }
     document.getElementById("selectX").addEventListener('click', function()
-  {let player1Select = playerFactory('player1','X'); } );
+      {let player1Select = playerFactory('player1','X'); } );
+    document.getElementById("selectO").addEventListener('click', function()
+      {let player1Select = playerFactory('player1','O'); } );
+
   // need this to change based on selection chosen. 
   }
 
@@ -38,14 +41,9 @@ const checkWinner = () => {
 
 }
 
-
-
-
-
-
 const playerFactory = (player,select) =>  {
 
-  console.log(player + select);
+  console.log(player, select);
   return { player, select };
 
 };  
