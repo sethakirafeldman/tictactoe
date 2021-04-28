@@ -1,3 +1,5 @@
+let playerSelect = "";
+
 const generateBoard = () => {
     for (i=0; i < 9; i++ ){
       let newDiv = document.createElement("div");
@@ -8,12 +10,15 @@ const generateBoard = () => {
 
     }
     document.getElementById("selectX").addEventListener('click', function()
-      {const playerSelect = playerFactory('player1','X'); } );
+      {playerFactory('player1','X'); } );
     document.getElementById("selectO").addEventListener('click', function()
-      {const playerSelect = playerFactory('player1','O'); } );
-
-  // need this to change based on selection chosen. 
+      {playerFactory('player1','O'); } );
+    // these pass into factory.
+  
   }
+
+
+
 /*
 need something that can scan through the dom an determine the first player
 to reach 3 in a row of any of these. loop through 0-8 divs to check if winner. */
@@ -36,35 +41,36 @@ const checkWinner = () => {
 }
 
 const playerFactory = (player,select) =>  {
-  console.log(player, select);
-  let playerSelect= player.select;
-  return { player, select };
+
+  console.log(player, select + "factory");
+  //let playerSelect = player + select;
+  //return { player, select };
 
 };  
+// stuff from factory not captured in scope of clicker function.
+let clicker = function(i) {
+  
+  let selectedBox = document.getElementById(i);
+   // if (selectedBox.innerHTML.indexOf("X") != true) {
+  // this should grab player/select parameters from whatever the player chooses and pass into the innerHTML.
+  selectedBox.innerHTML = player.select;
+  console.log(selectedBox);
+  
+    //}
+
+// else {
+//console.log("else");
+// }
+
+document.getElementById("")
+
+}
 
 //const player1Select = playerFactory('player1', select)
 
 
 //const player2Select = objectFactory('Player Two', 'O');
 
-let clicker = function(i) {
-  
-      let selectedBox = document.getElementById(i);
-       // if (selectedBox.innerHTML.indexOf("X") != true) {
-      // this should grab player/select parameters from whatever the player chooses and pass into the innerHTML.
-      if ( playerSelect.select ==="X") { 
-      selectedBox.innerHTML = "";
-      console.log(selectedBox);
-      }
-        //}
-    
- // else {
-    //console.log("else");
- // }
-
-  document.getElementById("")
-
-  }
 
 
 
