@@ -1,4 +1,4 @@
-let playerSelect = "";
+
 
 const generateBoard = () => {
     for (i=0; i < 9; i++ ){
@@ -10,9 +10,9 @@ const generateBoard = () => {
 
     }
     document.getElementById("selectX").addEventListener('click', function()
-      {playerFactory('player1','X'); } );
+      {playerFactory('X'); } );
     document.getElementById("selectO").addEventListener('click', function()
-      {playerFactory('player1','O'); } );
+      {playerFactory('O'); } );
     // these pass into factory.
   
   }
@@ -33,6 +33,11 @@ const winners = {
   eight: [2,4,6]
  };
 
+ const chooseMarker = () => {
+
+  
+ }
+
 const checkWinner = () => {
     for (let j=0; j<8; j++) {
 
@@ -40,37 +45,28 @@ const checkWinner = () => {
 
 }
 
-const playerFactory = (player,select) =>  {
+const playerFactory = (select) =>  {  
 
-  console.log(player, select + "factory");
-  //let playerSelect = player + select;
-  //return { player, select };
+  console.log(select + "factory");
+ // playerSelect =  select;
+ return {  () =>clicker(select);
 
-};  
+    } ;
+  
+    let clicker = function(i, select) {   
+      let selectedBox = document.getElementById(i);
+      // if (selectedBox.innerHTML.indexOf("X") != true) {
+      // this should grab player/select parameters from whatever the player chooses and pass into the innerHTML.
+      selectedBox.innerHTML = select;
+      console.log(selectedBox); 
+    };
+
 // stuff from factory not captured in scope of clicker function.
-let clicker = function(i) {
-  
-  let selectedBox = document.getElementById(i);
-   // if (selectedBox.innerHTML.indexOf("X") != true) {
-  // this should grab player/select parameters from whatever the player chooses and pass into the innerHTML.
-  selectedBox.innerHTML = player.select;
-  console.log(selectedBox);
-  
-    //}
-
-// else {
-//console.log("else");
-// }
-
-document.getElementById("")
-
-}
 
 //const player1Select = playerFactory('player1', select)
 
 
 //const player2Select = objectFactory('Player Two', 'O');
-
 
 
 
