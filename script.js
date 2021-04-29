@@ -9,13 +9,16 @@ const generateBoard = () => {
       newDiv.setAttribute("id", i);
     }
 
-    document.getElementById("selectX").addEventListener('click', function()
-      {marker="X"; } );
-    document.getElementById("selectO").addEventListener('click', function()
-      {marker="O"; } );
+    document.getElementById("selectX").addEventListener('click', setMarker());
+    document.getElementById("selectO").addEventListener('click', setMarker());
   
   }
 
+const setMarker = () => {
+    //marker = "X";
+    let markerButtons =document.getElementsByClassName("markerButton");
+    markerButtons.innerHTML='test';
+} 
 
 
 /*
@@ -50,14 +53,13 @@ const checkWinner = () => {
     }
 
 }
-/*
-const playerFactory = (select) =>  {  
 
-  console.log(select + "factory");
- // playerSelect =  select;
- return {  () =>clicker(select);
+function playerConstructor (player, marker) { 
+  this.player = player;
+  this.marker = marker;
+} 
 
-    } ;*/
+let playerOne = new playerConstructor("Player 1", "X");
 
 
 // stuff from factory not captured in scope of clicker function.
