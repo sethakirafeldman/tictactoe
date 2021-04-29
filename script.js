@@ -32,7 +32,8 @@ const winners = {
   eight: [2,4,6]
  };
 
-  
+  // need to store player info and marker info in an object somewhere so that it can be used when checking whinners. perhaps a factory function in 
+  // order create objects to check against the winner arrays. 
  let clicker = function(i) {   
    console.log(i);
     let selectedBox = document.getElementById(i);
