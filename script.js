@@ -21,13 +21,12 @@ const generateBoard = () => {
   }
 
   function setMarker(m) {
-    console.log("marker is: " +m)
-    playerMarker.push(m);
-    
-} 
+      console.log("marker is: " +m)
+      document.getElementById("selectX").className="hide-button";
+      document.getElementById("selectO").className="hide-button";
 
-playerMarker = [];
-
+      return m;
+      } 
 /*
 need something that can scan through the dom an determine the first player
 to reach 3 in a row of any of these. loop through 0-8 divs to check if winner. */
@@ -45,13 +44,17 @@ const winners = {
   // need to store player info and marker info in an object somewhere so that it can be used when checking whinners. perhaps a factory function in 
   // order create objects to check against the winner arrays. 
  let clicker = function(i) {   
+
+
    console.log(i);
     let selectedBox = document.getElementById(i);
-
+ 
    // if (selectedBox.innerHTML.indexOf("X") != true) {
    // this should grab player/select parameters from whatever the player chooses and pass into the innerHTML.
+  
    selectedBox.innerHTML = m;
    console.log(selectedBox);
+  
  };
 
 
