@@ -21,10 +21,8 @@ const generateBoard = () => {
   }
 
   function setMarker(m) {
-      console.log("marker is: " +m)
       document.getElementById("selectX").className="hide-button";
       document.getElementById("selectO").className="hide-button";
-
       return m;
       } 
 /*
