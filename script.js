@@ -1,5 +1,7 @@
 selectedBox = "";
 
+
+
 const generateBoard = () => {
     for (i=0; i < 9; i++ ){
       let newDiv = document.createElement("div");
@@ -9,17 +11,22 @@ const generateBoard = () => {
       newDiv.setAttribute("id", i);
     }
 
-    document.getElementById("selectX").addEventListener('click', setMarker());
-    document.getElementById("selectO").addEventListener('click', setMarker());
+    document.getElementById("selectX").addEventListener('click', () => {
+      setMarker(m="X"); 
+    });
+    document.getElementById("selectO").addEventListener('click', () => {
+      setMarker(m="O"); 
+    });
   
   }
 
-const setMarker = () => {
-    //marker = "X";
-    let markerButtons =document.getElementsByClassName("markerButton");
-    markerButtons.innerHTML='test';
+  function setMarker(m) {
+    console.log("marker is: " +m)
+    playerMarker.push(m);
+    
 } 
 
+playerMarker = [];
 
 /*
 need something that can scan through the dom an determine the first player
@@ -40,9 +47,10 @@ const winners = {
  let clicker = function(i) {   
    console.log(i);
     let selectedBox = document.getElementById(i);
+
    // if (selectedBox.innerHTML.indexOf("X") != true) {
    // this should grab player/select parameters from whatever the player chooses and pass into the innerHTML.
-   selectedBox.innerHTML = marker;
+   selectedBox.innerHTML = m;
    console.log(selectedBox);
  };
 
@@ -54,12 +62,6 @@ const checkWinner = () => {
 
 }
 
-function playerConstructor (player, marker) { 
-  this.player = player;
-  this.marker = marker;
-} 
-
-let playerOne = new playerConstructor("Player 1", "X");
 
 
 // stuff from factory not captured in scope of clicker function.
