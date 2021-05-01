@@ -16,8 +16,18 @@
     text-align: center;
 }
 
-.marker-button {
+.promptContainer {
+    align-items: center;
+    justify-content: center;
+}
 
+.marker-button {
+    text-align: center;
+    border: none;
+    padding: 1%;
+    color: whitesmoke;
+    background-color: green;
+    border-radius: 2px;
 }
 
 .hide-button {

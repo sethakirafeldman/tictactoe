@@ -1,6 +1,6 @@
 selectedBox = "";
 
-
+let m = "";
 
 const generateBoard = () => {
     for (i=0; i < 9; i++ ){
@@ -23,6 +23,7 @@ const generateBoard = () => {
   function setMarker(m) {
       document.getElementById("selectX").className="hide-button";
       document.getElementById("selectO").className="hide-button";
+      document.getElementById("promptMe").innerHTML = "You have chosen: "+ m;
       return m;
       } 
 /*
@@ -42,17 +43,21 @@ const winners = {
   // need to store player info and marker info in an object somewhere so that it can be used when checking whinners. perhaps a factory function in 
   // order create objects to check against the winner arrays. 
  let clicker = function(i) {   
+    if (m === "X" || m ==="O") { 
+      console.log(i);
+      let selectedBox = document.getElementById(i);   
+     // if (selectedBox.innerHTML.indexOf("X") != true) {
+     // this should grab player/select parameters from whatever the player chooses and pass into the innerHTML.
+     selectedBox.innerHTML = m;
+     console.log(selectedBox);
 
+    }
 
-   console.log(i);
-    let selectedBox = document.getElementById(i);
+    else {
  
-   // if (selectedBox.innerHTML.indexOf("X") != true) {
-   // this should grab player/select parameters from whatever the player chooses and pass into the innerHTML.
-  
-   selectedBox.innerHTML = m;
-   console.log(selectedBox);
-  
+    alert("please select a marker");
+
+    };
  };
 
 
