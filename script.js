@@ -40,6 +40,11 @@ const winners = {
   eight: [2,4,6]
  };
 
+ let xPlacement = {
+
+  
+ }
+
  const checkWinner = () => {
   for (let j=0; j<8; j++) {
       let checkScore = document.getElementById(j);
@@ -75,18 +80,6 @@ const winners = {
 
     };
  };
-
-
-
-
-
-
-// stuff from factory not captured in scope of clicker function.
-
-//const player1Select = playerFactory('player1', select)
-
-
-//const player2Select = objectFactory('Player Two', 'O');
 
 
 
