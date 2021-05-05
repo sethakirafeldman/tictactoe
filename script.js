@@ -23,7 +23,9 @@ const generateBoard = () => {
   function setMarker(m) {
       document.getElementById("selectX").className="hide-button";
       document.getElementById("selectO").className="hide-button";
-      document.getElementById("promptMe").innerHTML = "You have chosen: "+ m;
+      document.getElementById("promptMe").innerHTML = `You have chosen ${m}` //template string :) 
+      player.type = "user"; // adds property to object.
+      player.marker = m;
       return m;
       } 
 /*
@@ -39,6 +41,10 @@ const winners = {
   seven: [2,5,8],
   eight: [2,4,6]
  };
+
+const player = {
+
+};
 
  let xPlacement = {
 
