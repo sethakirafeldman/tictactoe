@@ -20,34 +20,46 @@ const generateBoard = () => {
   
   }
 
+  const setComputer = () => {
+      playerTwo.type = "computer";
+      if (m === "X") {
+        playerTwo.marker = "O";
+      }
+      else {
+        playerTwo.marker = "X" 
+      };
+  }
+
   function setMarker(m) {
       document.getElementById("selectX").className="hide-button";
       document.getElementById("selectO").className="hide-button";
       document.getElementById("promptMe").innerHTML = `You have chosen ${m}` //template string :) 
-      player.type = "user"; // adds property to object.
-      player.marker = m;
+      playerOne.type = "user"; // adds property to object.
+      playerOne.marker = m;
+      setComputer();
       return m;
-      } 
+
+      };
+
+      
 /*
 need something that can scan through the dom an determine the first player
 to reach 3 in a row of any of these. loop through 0-8 divs to check if winner. */
 const winners = {
-  one: [0,1,2],
-  two: [3,4,5],
-  three: [6,7,8],
-  four: [0,3,6],
-  five: [0,4,8],
-  six: [1,4,7],
-  seven: [2,5,8],
-  eight: [2,4,6]
+  key:[ [0,1,2],[3,4,5],[6,7,8],[0,3,6],[0,4,8],[1,4,7],[2,5,8], [2,4,6] ],
+  compare: [""]
  };
 
-const player = {
+const playerOne = {
 
 };
 
- let xPlacement = {
+const playerTwo = {
+    type: "",
+    marker: ""
+}
 
+ let xPlacement = {
   
  }
 
@@ -57,6 +69,8 @@ const player = {
 
       if ( checkScore.innerHTML ==="X") {
         console.log(j+"this is X");
+        winners.compare[0]= "test" ;
+        console.log(winners.compare);
       }
       else if ( checkScore.innerHTML==="O" ) {
         console.log(j+"this is O");
@@ -73,17 +87,12 @@ const player = {
     if (m === "X" || m ==="O") { 
       console.log(i);
       let selectedBox = document.getElementById(i);   
-     // if (selectedBox.innerHTML.indexOf("X") != true) {
-     selectedBox.innerHTML = m;
-     console.log(selectedBox);
+      selectedBox.innerHTML = m;
+      console.log(selectedBox);
       checkWinner();
-
     }
-
     else {
- 
-    alert("please select a marker");
-
+      alert("please select a marker");
     };
  };
 
