@@ -49,7 +49,7 @@ const winners = {
   key:[ 
     [0,1,2],[3,4,5],[6,7,8],[0,3,6],[0,4,8],[1,4,7],[2,5,8], [2,4,6]
   ],
-  compare: [ [""]]
+  compare: [ ["","",""]] 
  };
 
 const playerOne = {
@@ -72,21 +72,17 @@ const playerTwo = {
       let checkScore = document.getElementById(j);
 
       if ( checkScore.innerHTML ==="X") {
-        
+          for (let k= 0; k <= 2; k++) {
+            winners.compare[0][k]= j;
+             // winners.compare[k] += winners.compare[k] = j;
+              console.log("this is k:",k)
+            }
 
-          let k= 0;
-          let l = 0;
-         // k++;
-          l++;
-          winners.compare[k][l]= j ;
-          console.log(k+"THISIS k");
-          console.log(winners.compare);
         }
       
       else if ( checkScore.innerHTML==="O" ) {
 
       }
-
   };
 
  };
