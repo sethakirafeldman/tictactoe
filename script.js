@@ -46,8 +46,10 @@ const generateBoard = () => {
 need something that can scan through the dom an determine the first player
 to reach 3 in a row of any of these. loop through 0-8 divs to check if winner. */
 const winners = {
-  key:[ [0,1,2],[3,4,5],[6,7,8],[0,3,6],[0,4,8],[1,4,7],[2,5,8], [2,4,6] ],
-  compare: [""]
+  key:[ 
+    [0,1,2],[3,4,5],[6,7,8],[0,3,6],[0,4,8],[1,4,7],[2,5,8], [2,4,6]
+  ],
+  compare: [ [""]]
  };
 
 const playerOne = {
@@ -64,31 +66,38 @@ const playerTwo = {
  }
 
  const checkWinner = () => {
-  for (let j=0; j<8; j++) {
+  for (let j=0; j<8; j++) { // iterates to get number of selected value.
+
+    // iterate three times to move through l, then once to move to next array, then repeat.
       let checkScore = document.getElementById(j);
 
       if ( checkScore.innerHTML ==="X") {
-        console.log(j+"this is X");
-        winners.compare[0]= "test" ;
-        console.log(winners.compare);
-      }
+        
+
+          let k= 0;
+          let l = 0;
+         // k++;
+          l++;
+          winners.compare[k][l]= j ;
+          console.log(k+"THISIS k");
+          console.log(winners.compare);
+        }
+      
       else if ( checkScore.innerHTML==="O" ) {
-        console.log(j+"this is O");
+
       }
 
   };
 
-}
+ };
 
 
   // need to store player info and marker info in an object somewhere so that it can be used when checking whinners. perhaps a factory function in 
   // order create objects to check against the winner arrays. 
  let clicker = function(i) {   
     if (m === "X" || m ==="O") { 
-      console.log(i);
       let selectedBox = document.getElementById(i);   
       selectedBox.innerHTML = m;
-      console.log(selectedBox);
       checkWinner();
     }
     else {
