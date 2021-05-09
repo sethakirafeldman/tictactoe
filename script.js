@@ -61,24 +61,26 @@ const playerTwo = {
     marker: ""
 }
 
- let xPlacement = {
-  
- }
+ let xPlacement = [];
+
 
  const checkWinner = () => {
-  for (let j=0; j<8; j++) { // iterates to get number of selected value.
+  for (let j=0; j<8; j++) { 
 
-    // iterate three times to move through l, then once to move to next array, then repeat.
       let checkScore = document.getElementById(j);
-
-      if ( checkScore.innerHTML ==="X") {
-          for (let k= 0; k <= 2; k++) {
-            winners.compare[0][k]= j;
-             // winners.compare[k] += winners.compare[k] = j;
-              console.log("this is k:",k)
+  // checks all cells for contents.
+  
+    if ( checkScore.innerHTML ==="X") { // for x
+  // iterate three times to move through l, then once to move to next array, then repeat.
+        xPlacement.push(j);
+        while (xPlacement.length >= 4) {
+            xPlacement.shift();
+            // cuts array down to only 3 entries.
+            winners.compare[0] = xPlacement;
             }
+          }
 
-        }
+        
       
       else if ( checkScore.innerHTML==="O" ) {
 
