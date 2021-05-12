@@ -31,8 +31,7 @@ const generateBoard = () => {
   }
 
   function setMarker(m) {
-      document.getElementById("selectX").className="hide-button";
-      document.getElementById("selectO").className="hide-button";
+      document.querySelectorAll(".marker-button").className="hide-button";
       document.getElementById("promptMe").innerHTML = `You have chosen ${m}` //template string :) 
       playerOne.type = "user"; // adds property to object.
       playerOne.marker = m;
