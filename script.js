@@ -1,10 +1,17 @@
 selectedBox = "";
 let m = "";
+
 const playerOne = { 
 placement: placement = []
 };
 
 const playerTwo = { };
+
+const gameBoardState = {
+  xPos: [],
+  oPos: []
+}; 
+
 
 const generateBoard = () => {
     for (i=0; i < 9; i++ ){
@@ -34,7 +41,7 @@ const generateBoard = () => {
       };
   }
   //hides marker selection options, sets selection.
-  function setMarker(m) {
+  const setMarker = (m) => {
       document.querySelectorAll(".marker-button").className="hide-button";
       document.getElementById("promptMe").innerText = `You have chosen ${m}` //template string :) 
       playerOne.type = "user"; // adds property to object.
@@ -55,50 +62,33 @@ const winners = {
   compare: [ ["","",""]] 
  };
 
-
-
- /*
  const checkWinner = () => {
-  for (let j=0; j<8; j++) { 
+      for (let j=0; j <= 8; j++ ) {
+          let square = document.getElementById(j);
 
-      let checkScore = document.getElementById(j);
-  // checks all cells for contents.
-  
-    if ( checkScore.innerText ==="X") { // for x
-  // iterate three times to move through l, then once to move to next array, then repeat.
-        xPlacement.push(j);
-        while (xPlacement.length >= 4) {
-            xPlacement.shift();
-            // cuts array down to only 3 entries.
-            winners.compare[0] = xPlacement;
-            }
+          if (square.innerText.indexOf("X") !==-1 ) {
+             let xCells = gameBoardState.xPos;
+             xCells.push(square.id);
+             //try a filter here to remove duplicates.
           }
 
-      else if ( checkScore.innerText==="O" ) {
+          else if (square.innerText.indexOf("O") !==-1  ) {
+              let oCells = gameBoardState.oPos;
+              oCells.push(square.id);
+          }
+        }
 
-      }
-  };
-
- };
-*/
-
-  // need to store player info and marker info in an object somewhere so that it can be used when checking winners. 
-  //perhaps a factory function in 
-  // order create objects to check against the winner arrays.
+    }
 
  let clicker = (i) => {   
     if (m === "X" || m ==="O") { 
       let selectedBox = document.getElementById(i);   
       selectedBox.innerText = m;
-      //playerOne.placement[plaArr] = selectedBox.id;
       let p1PlacementArr = playerOne.placement;
       p1PlacementArr.push(selectedBox.id);
-      checkWinner(m);
+      checkWinner();
     }
     else {
       alert("please select a marker");
     };
  };
-
-const checkWinner = (m) => { 
-}
