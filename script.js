@@ -59,29 +59,17 @@ const winners = {
   key:[ 
     [0,1,2],[3,4,5],[6,7,8],[0,3,6],[0,4,8],[1,4,7],[2,5,8],[2,4,6]
   ],
-  compare: [ ["","",""]] 
  };
 
  const checkWinner = () => {
-      for (let j=0; j <= 8; j++ ) {
-          let square = document.getElementById(j);
-          /* this checks if X/O is in each cell each time
-          one is added. I think this is pointless*/
-          if (square.innerText.indexOf("X") !==-1 ) {
-             let xCells = gameBoardState.xPos;
-             xCells.push(square.id);
-             let xSet = new Set(xCells);
-             console.log(xSet);
+  let winners = winners.key;
+      for (let j=0; j <= winners.length; j++ ) {
+        console.log(winners);
+        // I want to loop through winners.key until a match is found.
+        /*if (winners ===playerOne.placement) {
+            console.log("WINNER!"+ playerOne.placement);
 
-          }
-
-          else if (square.innerText.indexOf("O") !==-1  ) {
-              let oCells = gameBoardState.oPos;
-              oCells.push(square.id);
-              let oSet = new Set(oCells);
-              console.log(oSet);
-          }
-
+        }*/
         }
 
     }
