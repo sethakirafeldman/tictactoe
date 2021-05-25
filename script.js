@@ -65,17 +65,23 @@ const winners = {
  const checkWinner = () => {
       for (let j=0; j <= 8; j++ ) {
           let square = document.getElementById(j);
-
+          /* this checks if X/O is in each cell each time
+          one is added. I think this is pointless*/
           if (square.innerText.indexOf("X") !==-1 ) {
              let xCells = gameBoardState.xPos;
              xCells.push(square.id);
-             //try a filter here to remove duplicates.
+             let xSet = new Set(xCells);
+             console.log(xSet);
+
           }
 
           else if (square.innerText.indexOf("O") !==-1  ) {
               let oCells = gameBoardState.oPos;
               oCells.push(square.id);
+              let oSet = new Set(oCells);
+              console.log(oSet);
           }
+
         }
 
     }
