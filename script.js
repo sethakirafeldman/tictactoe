@@ -12,6 +12,13 @@ const gameBoardState = {
   oPos: []
 }; 
 
+const winners = {
+  key:[ //stored as strings for easier compare.
+    "[0,1,2]","[3,4,5]","[6,7,8]","[0,3,6]","[0,4,8]","[1,4,7]","[2,5,8]","[2,4,6]"
+  ],
+ };
+
+ let winningKey = "";
 
 const generateBoard = () => {
     for (i=0; i < 9; i++ ){
@@ -50,26 +57,20 @@ const generateBoard = () => {
       return m;
 
       };
-
-      
-/*
-need something that can scan through the dom an determine the first player
-to reach 3 in a row of any of these. loop or filter through 0-8 divs to check if winner. */
-const winners = {
-  key:[ 
-    [0,1,2],[3,4,5],[6,7,8],[0,3,6],[0,4,8],[1,4,7],[2,5,8],[2,4,6]
-  ],
- };
-
- const checkWinner = () => {
-  let winners = winners.key;
-      for (let j=0; j <= winners.length; j++ ) {
-        console.log(winners);
-        // I want to loop through winners.key until a match is found.
-        /*if (winners ===playerOne.placement) {
-            console.log("WINNER!"+ playerOne.placement);
-
-        }*/
+const checkWinner = () => {
+   winningKey = winners.key;
+   playerOne.placement.sort();
+      for (let j=0; j <= winningKey.length; j++ ) {
+        //all numbers in playerone.Placement need to
+        // be checked to see if it matches all 3 numbers per
+        //winningKey array [j];
+        if (winningKey[j]===playerOne.placement) {
+          console.log("WINNER!"+ playerOne.placement);
+          //JSON.stringify can be used to compare arrays.
+        }
+        else {
+          console.log("no winner");
+        }
         }
 
     }
@@ -78,8 +79,7 @@ const winners = {
     if (m === "X" || m ==="O") { 
       let selectedBox = document.getElementById(i);   
       selectedBox.innerText = m;
-      let p1PlacementArr = playerOne.placement;
-      p1PlacementArr.push(selectedBox.id);
+      playerOne.placement.push(Number(selectedBox.id));
       checkWinner();
     }
     else {
