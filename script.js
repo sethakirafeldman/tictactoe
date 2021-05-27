@@ -61,6 +61,12 @@ const checkWinner = () => {
    winningKey = winners.key;
    playerOne.placement.sort();
       for (let j=0; j <= winningKey.length; j++ ) {
+          let checkSquare = document.getElementById(j);
+          if (checkSquare.id == 0) {
+              // check is winners.key[0] has identical characters in cells
+              // 0 through 2.
+            console.log(winners.key[0]);
+          }
         //all numbers in playerone.Placement need to
         // be checked to see if it matches all 3 numbers per
         //winningKey array [j];
@@ -69,7 +75,7 @@ const checkWinner = () => {
           //JSON.stringify can be used to compare arrays.
         }
         else {
-          console.log("no winner");
+          //console.log("no winner");
         }
         }
 
