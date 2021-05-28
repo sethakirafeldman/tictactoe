@@ -62,21 +62,19 @@ const checkWinner = () => {
    playerOne.placement.sort();
       for (let j=0; j <= winningKey.length; j++ ) {
           let checkSquare = document.getElementById(j);
-          if (checkSquare.id == 0) {
-              // check is winners.key[0] has identical characters in cells
-              // 0 through 2.
-            console.log(winners.key[0]);
+          /* not sure if I should just used checkSquare
+          to  check innerText to determine winner or use playerOne.placement
+          */ 
+          if (checkSquare.id == 0 && checkSquare.innerText !== "") {
+              let k = 0;
+              while (k <= 2) {
+              console.log(playerOne.placement[k]);
+              k++;
+              if (playerOne.placement) {
+                  // this should check if 
+              }
+            }
           }
-        //all numbers in playerone.Placement need to
-        // be checked to see if it matches all 3 numbers per
-        //winningKey array [j];
-        if (winningKey[j]===playerOne.placement) {
-          console.log("WINNER!"+ playerOne.placement);
-          //JSON.stringify can be used to compare arrays.
-        }
-        else {
-          //console.log("no winner");
-        }
         }
 
     }
