@@ -13,8 +13,8 @@ const gameBoardState = {
 }; 
 
 const winners = {
-  key:[ //stored as strings for easier compare.
-    "[0,1,2]","[3,4,5]","[6,7,8]","[0,3,6]","[0,4,8]","[1,4,7]","[2,5,8]","[2,4,6]"
+  key:[
+    [0,1,2],[3,4,5],[6,7,8],[0,3,6],[0,4,8],[1,4,7],[2,5,8],[2,4,6]
   ],
  };
 
@@ -55,29 +55,17 @@ const generateBoard = () => {
       playerOne.marker = m;
       setComputer();
       return m;
-
       };
+
 const checkWinner = () => {
    winningKey = winners.key;
    playerOne.placement.sort();
       for (let j=0; j <= winningKey.length; j++ ) {
           let checkSquare = document.getElementById(j);
-          /* not sure if I should just used checkSquare
-          to  check innerText to determine winner or use playerOne.placement
-          */ 
-          if (checkSquare.id == 0 && checkSquare.innerText !== "") {
-              let k = 0;
-              while (k <= 2) {
-              console.log(playerOne.placement[k]);
-              k++;
-              if (playerOne.placement) {
-                  // this should check if 
-              }
-            }
-          }
+          if (winners.key[j].every( (r)=> playerOne.placement.includes(r))  === true ) 
+            console.log("WINNER!");
         }
-
-    }
+            } 
 
  let clicker = (i) => {   
     if (m === "X" || m ==="O") { 
@@ -89,4 +77,4 @@ const checkWinner = () => {
     else {
       alert("please select a marker");
     };
- };
+ }
