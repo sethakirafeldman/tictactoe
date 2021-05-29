@@ -63,17 +63,22 @@ const checkWinner = () => {
       for (let j=0; j <= winningKey.length; j++ ) {
           let checkSquare = document.getElementById(j);
           if (winners.key[j].every( (r)=> playerOne.placement.includes(r))  === true ) 
-            console.log("WINNER!");
+            console.log("WINNER!");    
         }
             } 
 
  let clicker = (i) => {   
     if (m === "X" || m ==="O") { 
-      let selectedBox = document.getElementById(i);   
-      selectedBox.innerText = m;
-      playerOne.placement.push(Number(selectedBox.id));
-      checkWinner();
-    }
+        let selectedBox = document.getElementById(i);   
+        if (selectedBox.innerText === "") {
+          selectedBox.innerText = m;
+          playerOne.placement.push(Number(selectedBox.id));
+          checkWinner();
+        }
+        else {
+          console.log("square already filled");
+        }
+      }
     else {
       alert("please select a marker");
     };
