@@ -61,18 +61,26 @@ const checkWinner = () => {
    winningKey = winners.key;
    playerOne.placement.sort();
       for (let j=0; j <= winningKey.length; j++ ) {
-          let checkSquare = document.getElementById(j);
-          if (winners.key[j].every( (r)=> playerOne.placement.includes(r))  === true ) 
+         // let checkSquare = document.getElementById(j);
+           if (winners.key[j].every( (r) => playerOne.placement.includes(r) )  === true ) {
             console.log("WINNER!");    
-        }
+            }
+            // not sure why there is an error here. 
+            else if (r = undefined) {
+              console.log("no winner");
+            }
+        
             } 
+  }
 
  let clicker = (i) => {   
     if (m === "X" || m ==="O") { 
         let selectedBox = document.getElementById(i);   
+
         if (selectedBox.innerText === "") {
           selectedBox.innerText = m;
           playerOne.placement.push(Number(selectedBox.id));
+          computerMove(); // this has to be here due to error in checkWInner()
           checkWinner();
         }
         else {
@@ -82,4 +90,14 @@ const checkWinner = () => {
     else {
       alert("please select a marker");
     };
+  
  }
+
+ const computerMove = () => {
+   const randomMove = (max) => Math.floor(Math.random() * 9 );
+   let computerBox = document.getElementById(randomMove());
+    if (computerBox.innerText === "") {
+      computerBox.innerText = playerTwo.marker;
+    }
+    else { computerMove() }
+  }
