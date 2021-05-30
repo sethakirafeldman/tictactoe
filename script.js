@@ -93,6 +93,13 @@ const checkWinner = () => {
   
  }
 
+ const calculatedMove = () => {
+  for (let l = 0; i < winners.key.length; l++) {
+      let moveCheck = winners.key[l];
+      
+      return Math.floor(Math.random() * moveCheck.length );
+  } // trying to make computer calculate move.
+}
  const computerMove = () => {
    const randomMove = (max) => Math.floor(Math.random() * 9 );
    let computerBox = document.getElementById(randomMove());
