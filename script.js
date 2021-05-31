@@ -63,11 +63,14 @@ const checkWinner = () => {
       for (let j=0; j <= winningKey.length; j++ ) {
          // let checkSquare = document.getElementById(j);
            if (winners.key[j].every( (r) => playerOne.placement.includes(r) )  === true ) {
-            console.log("WINNER!");    
+            console.log("WINNER!"); 
+            return true;
+     
             }
             // not sure why there is an error here. 
             else if (r = undefined) {
               console.log("no winner");
+              return false;
             }
         
             } 
@@ -80,7 +83,10 @@ const checkWinner = () => {
         if (selectedBox.innerText === "") {
           selectedBox.innerText = m;
           playerOne.placement.push(Number(selectedBox.id));
-          computerMove(); // this has to be here due to error in checkWInner()
+          setTimeout(() => {
+          computerMove() 
+          }, 1000);
+          // this has to be here due to error in checkWInner()
           checkWinner();
         }
         else {
@@ -96,8 +102,8 @@ const checkWinner = () => {
  const calculatedMove = () => {
   for (let l = 0; i < winners.key.length; l++) {
       let moveCheck = winners.key[l];
-      
-      return Math.floor(Math.random() * moveCheck.length );
+      console.log(moveCheck);
+      return Math.floor(Math.random() * 6 );
   } // trying to make computer calculate move.
 }
  const computerMove = () => {
@@ -108,3 +114,8 @@ const checkWinner = () => {
     }
     else { computerMove() }
   }
+
+  /* winners.key[] contains winning combos. computer
+  should block player from winning by referencing these. 
+  
+  https://www.freecodecamp.org/news/how-to-make-your-tic-tac-toe-game-unbeatable-by-using-the-minimax-algorithm-9d690bad4b37/*/
