@@ -108,13 +108,19 @@ const checkWinner = () => {
 }
  const computerMove = () => {
    const randomMove = (max) => Math.floor(Math.random() * 9 );
-   let computerBox = document.getElementById(randomMove());
-    if (computerBox.innerText === "") {
-      computerBox.innerText = playerTwo.marker;
+   let computerSquare = document.getElementById(randomMove());
+   //let computerSquare = document.getElementById(miniMax());
+    if (computerSquare.innerText === "") {
+      computerSquare.innerText = playerTwo.marker;
     }
     else { computerMove() }
   }
 
+  const miniMax = () => {
+        
+  }
+
+  
   /* winners.key[] contains winning combos. computer
   should block player from winning by referencing these. 
   
