@@ -37,6 +37,9 @@ const generateBoard = () => {
     });
   
   }
+
+
+
   // sets computer to opposite of player sel. 
   const setComputer = () => {
       playerTwo.type = "computer";
@@ -50,12 +53,20 @@ const generateBoard = () => {
   //hides marker selection options, sets selection.
   const setMarker = (m) => {
       document.querySelectorAll(".marker-button").className="hide-button";
-      document.getElementById("promptMe").innerText = `You have chosen ${m}` //template string :) 
+      //document.getElementById("promptMe").innerText = `You have chosen ${m}` //template string :) 
+      document.getElementById("promptMe").innerText = `You have chosen ${m}`;
       playerOne.type = "user"; // adds property to object.
       playerOne.marker = m;
       setComputer();
       return m;
       };
+
+const endRound = (pla) => {
+    console.log("end of round");
+    document.getElementById("promptMe").innerText=pla.type +" wins!";
+
+
+}
 
 const checkWinner = () => {
    winningKey = winners.key;
@@ -63,10 +74,11 @@ const checkWinner = () => {
       for (let j=0; j <= winningKey.length; j++ ) {
          // let checkSquare = document.getElementById(j);
            if (winners.key[j].every( (r) => playerOne.placement.includes(r) )  === true ) {
-            console.log("WINNER!"); 
-            return true;
-     
+            endRound(playerOne);
+            return playerOne + "wins";
+            //need to sort out logic for computer win. not as simple as an else if.
             }
+
             // not sure why there is an error here. 
             else if (r = undefined) {
               console.log("no winner");
