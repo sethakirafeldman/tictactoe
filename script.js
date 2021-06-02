@@ -2,14 +2,16 @@ selectedBox = "";
 let m = "";
 
 const playerOne = { 
-placement: placement = []
+  placement: placement = []
 };
 
-const playerTwo = { };
+const playerTwo = { 
+  placement: placement = []
 
-const gameBoardState = {
-  xPos: [],
-  oPos: []
+};
+
+const gameBoardState  = {
+
 }; 
 
 const winners = {
@@ -61,28 +63,29 @@ const generateBoard = () => {
       return m;
       };
 
-const endRound = (pla) => {
+const endRound = (player) => {
     console.log("end of round");
-    document.getElementById("promptMe").innerText=pla.type +" wins!";
-
-
+    document.getElementById("promptMe").innerText=player.type +" wins!";
 }
 
 const checkWinner = () => {
    winningKey = winners.key;
    playerOne.placement.sort();
+   
       for (let j=0; j <= winningKey.length; j++ ) {
          // let checkSquare = document.getElementById(j);
-           if (winners.key[j].every( (r) => playerOne.placement.includes(r) )  === true ) {
-            endRound(playerOne);
-            return playerOne + "wins";
-            //need to sort out logic for computer win. not as simple as an else if.
+           if (winners.key[j].every( (r) => playerTwo.placement.includes(r) ) === true) {
+            endRound(playerTwo);
+            return playerTwo + "wins";
             }
-
-            // not sure why there is an error here. 
-            else if (r = undefined) {
-              console.log("no winner");
-              return false;
+            
+            else if (winners.key[j].every( (r) => playerOne.placement.includes(r) ) === true)
+            { 
+              endRound(playerOne);
+              return playerOne + "wins";
+            }
+            else if (typeof r === "undefined") {
+              //console.log("no winner");
             }
         
             } 
@@ -124,6 +127,8 @@ const checkWinner = () => {
    //let computerSquare = document.getElementById(miniMax());
     if (computerSquare.innerText === "") {
       computerSquare.innerText = playerTwo.marker;
+      playerTwo.placement.push(Number(computerSquare.id));
+      playerTwo.placement.sort();
     }
     else { computerMove() }
   }
