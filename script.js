@@ -38,7 +38,7 @@ const generateBoard = () => {
       setMarker(m="O"); 
     });
   
-  }
+  };
 
 
 
@@ -55,9 +55,8 @@ const generateBoard = () => {
   //hides marker selection options, sets selection.
   const setMarker = (m) => {
       document.querySelectorAll(".marker-button").className="hide-button";
-      //document.getElementById("promptMe").innerText = `You have chosen ${m}` //template string :) 
       document.getElementById("promptMe").innerText = `You have chosen ${m}`;
-      playerOne.type = "user"; // adds property to object.
+      playerOne.type = "user"; 
       playerOne.marker = m;
       setComputer();
       return m;
@@ -65,31 +64,35 @@ const generateBoard = () => {
 
 const endRound = (player) => {
     console.log("end of round");
-    document.getElementById("promptMe").innerText=player.type +" wins!";
+    let pla = player.type;
+    document.getElementById("promptMe").innerText= pla +" wins!";
 }
 
 const checkWinner = () => {
-   winningKey = winners.key;
+   //winningKey = winners.key;
    playerOne.placement.sort();
-   
-      for (let j=0; j <= winningKey.length; j++ ) {
-         // let checkSquare = document.getElementById(j);
-           if (winners.key[j].every( (r) => playerTwo.placement.includes(r) ) === true) {
-            endRound(playerTwo);
-            return playerTwo + "wins";
+
+      for (let j=0; j <= winners.key.length; j++ ) {
+
+        if (winners.key[j].every( (r) => playerTwo.placement.includes(r) ) === true )
+        {
+            endRound(playerTwo);    
+            //return true;
             }
             
-            else if (winners.key[j].every( (r) => playerOne.placement.includes(r) ) === true)
+            else if (winners.key[j].every( (s) => playerOne.placement.includes(s) ) === true)
             { 
               endRound(playerOne);
-              return playerOne + "wins";
+              //return playerOne + "wins";
             }
             else if (typeof r === "undefined") {
               //console.log("no winner");
             }
-        
+            
             } 
-  }
+  } /* not clear as to why the computer 'if' does not fire but the player one does, regardless of order. 
+    The difference could be with the way clicker adds stores placement vs the randomized computer one.
+*/
 
  let clicker = (i) => {   
     if (m === "X" || m ==="O") { 
