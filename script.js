@@ -64,26 +64,27 @@ const generateBoard = () => {
 
 const endRound = (player) => {
     console.log("end of round");
-    let pla = player.type;
-    document.getElementById("promptMe").innerText= pla +" wins!";
+    document.getElementById("promptMe").innerText= player.type +" wins!";
 }
 
 const checkWinner = () => {
-   //winningKey = winners.key;
    playerOne.placement.sort();
    playerTwo.placement.sort();
+
       for (let j=0; j <= winners.key.length; j++ ) {
 
-        if (winners.key[j].every( (r) => playerOne.placement.includes(r) ) === true )
-        {
-            endRound(playerOne);    
+          if (winners.key[j].every( (r) => playerOne.placement.includes(r) ) === true ) {
+            endRound(playerOne);
+            return true;    
             }
             
-            else if (winners.key[j].every( (r) => playerTwo.placement.includes(r) ) === true)
-            { 
+          else if (winners.key[j].every( (r) => playerTwo.placement.includes(r) ) === true) { 
               endRound(playerTwo);
+              return true;
             }
-            else if ( winners.key[j].every === "undefined") {
+          else if (playerOne.placement.length === 5 && playerTwo.placement.length === 4) {
+              endRound();
+            // need to figure out tie game logic.
             }
 
   
