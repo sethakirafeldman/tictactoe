@@ -71,28 +71,24 @@ const endRound = (player) => {
 const checkWinner = () => {
    //winningKey = winners.key;
    playerOne.placement.sort();
-
+   playerTwo.placement.sort();
       for (let j=0; j <= winners.key.length; j++ ) {
 
-        if (winners.key[j].every( (r) => playerTwo.placement.includes(r) ) === true )
+        if (winners.key[j].every( (r) => playerOne.placement.includes(r) ) === true )
         {
-            endRound(playerTwo);    
-            //return true;
+            endRound(playerOne);    
             }
             
-            else if (winners.key[j].every( (s) => playerOne.placement.includes(s) ) === true)
+            else if (winners.key[j].every( (r) => playerTwo.placement.includes(r) ) === true)
             { 
-              endRound(playerOne);
-              //return playerOne + "wins";
+              endRound(playerTwo);
             }
-            else if (typeof r === "undefined") {
-              //console.log("no winner");
+            else if ( winners.key[j].every === "undefined") {
             }
-            
-            } 
-  } /* not clear as to why the computer 'if' does not fire but the player one does, regardless of order. 
-    The difference could be with the way clicker adds stores placement vs the randomized computer one.
-*/
+
+  
+        } 
+  } 
 
  let clicker = (i) => {   
     if (m === "X" || m ==="O") { 
@@ -104,17 +100,18 @@ const checkWinner = () => {
           setTimeout(() => {
           computerMove() 
           }, 1000);
-          // this has to be here due to error in checkWInner()
-          checkWinner();
         }
         else {
           console.log("square already filled");
         }
-      }
+  }
+
     else {
       alert("please select a marker");
-    };
-  
+    }
+
+    checkWinner();
+
  }
 
  const calculatedMove = () => {
@@ -131,9 +128,12 @@ const checkWinner = () => {
     if (computerSquare.innerText === "") {
       computerSquare.innerText = playerTwo.marker;
       playerTwo.placement.push(Number(computerSquare.id));
-      playerTwo.placement.sort();
+      //playerTwo.placement.sort();
     }
     else { computerMove() }
+
+    checkWinner();
+
   }
 
   const miniMax = () => {
