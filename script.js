@@ -11,7 +11,8 @@ const playerTwo = {
 };
 
 const gameBoardState  = {
-
+  placement: [],
+  fullBoard: [0,1,2,3,4,5,6,7,8]
 }; 
 
 const winners = {
@@ -20,7 +21,7 @@ const winners = {
   ],
  };
 
- let winningKey = "";
+ //let winningKey = "";
 
 const generateBoard = () => {
     for (i=0; i < 9; i++ ){
@@ -64,12 +65,19 @@ const generateBoard = () => {
 
 const endRound = (player) => {
     console.log("end of round");
-    document.getElementById("promptMe").innerText= player.type +" wins!";
+    if (player === playerOne || player === playerTwo) {
+      document.getElementById("promptMe").innerText= player.type +" wins!";
+    }
+    else if (player === tieGame) {
+      console.log("tie!");
+      document.getElementById("promptMe").innerText= "Stalemate! No one wins.";
+    }
 }
 
 const checkWinner = () => {
-   playerOne.placement.sort();
-   playerTwo.placement.sort();
+  playerOne.placement.sort();
+  playerTwo.placement.sort();
+  gameBoardState.placement.sort();
 
       for (let j=0; j <= winners.key.length; j++ ) {
 
@@ -82,9 +90,12 @@ const checkWinner = () => {
               endRound(playerTwo);
               return true;
             }
-          else if (playerOne.placement.length === 5 && playerTwo.placement.length === 4) {
-              endRound();
-            // need to figure out tie game logic.
+
+          else if (gameBoardState.placement === gameBoardState.fullBoard) {
+              endRound(tieGame);
+              /* plan was to compare array contents, but this is inelegant. likely easier to c
+              ompare gameboardstate.placement to numbers 0-8. */ 
+
             }
 
   
@@ -98,6 +109,7 @@ const checkWinner = () => {
         if (selectedBox.innerText === "") {
           selectedBox.innerText = m;
           playerOne.placement.push(Number(selectedBox.id));
+          gameBoardState.placement.push(Number(selectedBox.id));
           setTimeout(() => {
           computerMove() 
           }, 1000);
@@ -129,7 +141,7 @@ const checkWinner = () => {
     if (computerSquare.innerText === "") {
       computerSquare.innerText = playerTwo.marker;
       playerTwo.placement.push(Number(computerSquare.id));
-      //playerTwo.placement.sort();
+      gameBoardState.placement.push(Number(computerSquare.id));
     }
     else { computerMove() }
 
