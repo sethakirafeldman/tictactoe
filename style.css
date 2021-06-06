@@ -2,35 +2,40 @@
     display: grid;
     width: 600px;
     height: 600px;
+    margin: auto;
+    padding: 5%;
     grid-template: repeat(3, 1fr) / repeat(3, 1fr) ;
-    background-color: aliceblue;
     border: 6px;
-    
 }
 
 
 .box {
-
     border: 6px solid;
     font-size: 1000%;
+    background-color: aliceblue;
     text-align: center;
 }
 
 .promptContainer {
     align-items: center;
     justify-content: center;
+    text-align: center;
 }
 
 .marker-button {
     text-align: center;
     border: none;
-    padding: 1%;
-    color: whitesmoke;
-    background-color: green;
-    border-radius: 2px;
+    padding: 25px;
+    height: fit-content;
+    width: fit-content;
+    color: black;
+    background-color: aliceblue;
+    border-style: solid;
+    border-color: black;
+    border-radius: 4px;
+    font-size: 30pt;
 }
 
 .hide-button {
     display: none;
-
 }

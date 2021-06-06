@@ -2,11 +2,13 @@ selectedBox = "";
 let m = "";
 
 const playerOne = { 
-  placement: placement = []
+  placement: placement = [],
+  status: ""
 };
 
 const playerTwo = { 
-  placement: placement = []
+  placement: placement = [],
+  status: ""
 
 };
 
@@ -21,9 +23,12 @@ const winners = {
   ],
  };
 
- //let winningKey = "";
+
+
+ // may be cleaner to change variable content whenever the text in gui is updated.
 
 const generateBoard = () => {
+
     for (i=0; i < 9; i++ ){
       let newDiv = document.createElement("div");
       document.getElementById("gameBoard").appendChild(newDiv);
@@ -38,14 +43,13 @@ const generateBoard = () => {
     document.getElementById("selectO").addEventListener('click', () => {
       setMarker(m="O"); 
     });
-  
+
+
   };
 
-
-
-  // sets computer to opposite of player sel. 
   const setComputer = () => {
       playerTwo.type = "computer";
+
       if (m === "X") {
         playerTwo.marker = "O";
       }
@@ -61,15 +65,15 @@ const generateBoard = () => {
       playerOne.marker = m;
       setComputer();
       return m;
-      };
+  };
 
 const endRound = (player) => {
     console.log("end of round");
     if (player === playerOne || player === playerTwo) {
+      player.status = "winner"
       document.getElementById("promptMe").innerText= player.type +" wins!";
     }
-    else if (player === tieGame) {
-      console.log("tie!");
+    else if (playerOne.status == "" || playerTwo.status == "") {
       document.getElementById("promptMe").innerText= "Stalemate! No one wins.";
     }
 }
@@ -79,26 +83,23 @@ const checkWinner = () => {
   playerTwo.placement.sort();
   gameBoardState.placement.sort();
 
-      for (let j=0; j <= winners.key.length; j++ ) {
+      for ( let j=0; j <= winners.key.length; j++ ) {
 
           if (winners.key[j].every( (r) => playerOne.placement.includes(r) ) === true ) {
             endRound(playerOne);
-            return true;    
+            //return true;    
             }
             
-          else if (winners.key[j].every( (r) => playerTwo.placement.includes(r) ) === true) { 
+          else if (winners.key[j].every( (s) => playerTwo.placement.includes(s) ) === true) { 
               endRound(playerTwo);
-              return true;
+             // return true;
             }
 
-          else if (gameBoardState.placement === gameBoardState.fullBoard) {
-              endRound(tieGame);
-              /* plan was to compare array contents, but this is inelegant. likely easier to c
-              ompare gameboardstate.placement to numbers 0-8. */ 
-
+          else if (gameBoardState.placement.length === 9) {
+                  if (playerOne.status == "" || playerTwo.status == "" ) {
+                      endRound();
+                  }
             }
-
-  
         } 
   } 
 
@@ -111,8 +112,9 @@ const checkWinner = () => {
           playerOne.placement.push(Number(selectedBox.id));
           gameBoardState.placement.push(Number(selectedBox.id));
           setTimeout(() => {
-          computerMove() 
-          }, 1000);
+            computerMove() 
+            }, 1000);
+          checkWinner();
         }
         else {
           console.log("square already filled");
@@ -123,8 +125,6 @@ const checkWinner = () => {
       alert("please select a marker");
     }
 
-    checkWinner();
-
  }
 
  const calculatedMove = () => {
@@ -134,27 +134,20 @@ const checkWinner = () => {
       return Math.floor(Math.random() * 6 );
   } // trying to make computer calculate move.
 }
- const computerMove = () => {
+
+const computerMove = () => {
    const randomMove = (max) => Math.floor(Math.random() * 9 );
-   let computerSquare = document.getElementById(randomMove());
+   let computerSquare = document.getElementById( randomMove() );
    //let computerSquare = document.getElementById(miniMax());
     if (computerSquare.innerText === "") {
       computerSquare.innerText = playerTwo.marker;
       playerTwo.placement.push(Number(computerSquare.id));
       gameBoardState.placement.push(Number(computerSquare.id));
+      checkWinner();
     }
+
     else { computerMove() }
+}
 
-    checkWinner();
-
-  }
-
-  const miniMax = () => {
+  //const miniMax = () => {
         
-  }
-
-  
-  /* winners.key[] contains winning combos. computer
-  should block player from winning by referencing these. 
-  
-  https://www.freecodecamp.org/news/how-to-make-your-tic-tac-toe-game-unbeatable-by-using-the-minimax-algorithm-9d690bad4b37/*/
