@@ -82,15 +82,16 @@ const checkWinner = () => {
   playerOne.placement.sort();
   playerTwo.placement.sort();
   gameBoardState.placement.sort();
+  const checkEvery = (check, target) => target.every(r => check.includes (r)); 
 
       for ( let j=0; j <= winners.key.length; j++ ) {
-
-          if (winners.key[j].every( (r) => playerOne.placement.includes(r) ) === true ) {
+          
+          if (checkEvery(playerOne.placement, winners.key[j]) === true ) {
             endRound(playerOne);
             //return true;    
             }
             
-          else if (winners.key[j].every( (s) => playerTwo.placement.includes(s) ) === true) { 
+          else if (checkEvery(playerTwo.placement, winners.key[j]) === true) { 
               endRound(playerTwo);
              // return true;
             }
@@ -100,6 +101,11 @@ const checkWinner = () => {
                       endRound();
                   }
             }
+
+          else {
+                console.log("errorsaver");
+
+          }  
         } 
   } 
 
