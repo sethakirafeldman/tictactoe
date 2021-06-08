@@ -1,6 +1,7 @@
 selectedBox = "";
 let m = "";
 
+
 const playerOne = { 
   placement: placement = [],
   status: ""
@@ -29,7 +30,7 @@ const winners = {
 
 const generateBoard = () => {
 
-    for (i=0; i < 9; i++ ){
+    for (i=0; i < 9; i++ ) {
       let newDiv = document.createElement("div");
       document.getElementById("gameBoard").appendChild(newDiv);
       newDiv.setAttribute("onclick", "clicker("+i+")");
@@ -44,8 +45,10 @@ const generateBoard = () => {
       setMarker(m="O"); 
     });
 
+    
 
   };
+
 
   const setComputer = () => {
       playerTwo.type = "computer";
@@ -110,7 +113,17 @@ const checkWinner = () => {
   } 
 
  let clicker = (i) => {   
-    if (m === "X" || m ==="O") { 
+
+    if (playerOne.status !== "" || playerTwo.status !== "") {
+        if (playerOne.status == "winner") {
+            document.getElementById("promptMe").innerText = "Sorry, the game is already over. Player One is the winner";
+      }  
+        else if (playerTwo.status=="winner") {
+            document.getElementById("promptMe").innerText ="Sorry, the game is already over. Player Two is the winner";
+        }
+    }
+
+    else if (m === "X" || m ==="O") { 
         let selectedBox = document.getElementById(i);   
 
         if (selectedBox.innerText === "") {
@@ -126,6 +139,7 @@ const checkWinner = () => {
           console.log("square already filled");
         }
   }
+     
 
     else {
       alert("please select a marker");
@@ -142,10 +156,12 @@ const checkWinner = () => {
 }
 
 const computerMove = () => {
+  if (playerTwo.status == "" && playerOne.status == "") {
+
    const randomMove = (max) => Math.floor(Math.random() * 9 );
    let computerSquare = document.getElementById( randomMove() );
    //let computerSquare = document.getElementById(miniMax());
-    if (computerSquare.innerText === "") {
+    if (computerSquare.innerText === "") { //
       computerSquare.innerText = playerTwo.marker;
       playerTwo.placement.push(Number(computerSquare.id));
       gameBoardState.placement.push(Number(computerSquare.id));
@@ -153,7 +169,15 @@ const computerMove = () => {
     }
 
     else { computerMove() }
-}
 
+  }
+
+  else { 
+    
+    console.log("Game over, computer move cancelled.")
+
+  }
+
+}
   //const miniMax = () => {
         
