@@ -77,9 +77,15 @@ const endRound = (player) => {
     }
 }
 
-let filterCheck = (filled)=> {
-  // trying to subtract values of currently filled squares from the total values on the board to get empty spaces.
-  return gameBoardState.fullBoard - gameBoardState.placement;
+let findEmpty = ()=> {
+  for  (let n = 0; n < 8; n++) {
+   console.log(n);
+    if (gameBoardState.fullBoard.includes(gameBoardState.placement[n]) === true) {
+    gameBoardState.empty = gameBoardState.placement[n];  
+    // right now only adds first selection number. 
+
+    }
+  }  
 };
 
 const checkWinner = () => {
@@ -88,9 +94,7 @@ const checkWinner = () => {
   gameBoardState.placement.sort();
   gameBoardState.playerOne = playerOne.placement;
   gameBoardState.playerTwo = playerTwo.placement;
-  
-
-  //gameBoardState.empty = () => { gameBoardState.empty = gameBoardState.fullBoard.filter() } ;
+  findEmpty();
 
   const checkEvery = (check, target) => target.every(r => check.includes (r)); 
 
