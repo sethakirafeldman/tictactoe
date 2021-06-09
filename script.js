@@ -1,7 +1,6 @@
 selectedBox = "";
 let m = "";
 
-
 const playerOne = { 
   placement: placement = [],
   status: ""
@@ -46,29 +45,26 @@ const generateBoard = () => {
     });
 
     
-
   };
 
+const setComputer = () => {
+    playerTwo.type = "computer";
 
-  const setComputer = () => {
-      playerTwo.type = "computer";
-
-      if (m === "X") {
-        playerTwo.marker = "O";
-      }
-      else {
-        playerTwo.marker = "X" 
-      };
-  }
-  //hides marker selection options, sets selection.
-  const setMarker = (m) => {
-      document.querySelectorAll(".marker-button").className="hide-button";
-      document.getElementById("promptMe").innerText = `You have chosen ${m}`;
-      playerOne.type = "user"; 
-      playerOne.marker = m;
-      setComputer();
-      return m;
-  };
+    if (m === "X") {
+      playerTwo.marker = "O";
+    }
+    else {
+      playerTwo.marker = "X" 
+    };
+}
+const setMarker = (m) => {
+    document.querySelectorAll(".marker-button").className="hide-button";
+    document.getElementById("promptMe").innerText = `You have chosen ${m}`;
+    playerOne.type = "user"; 
+    playerOne.marker = m;
+    setComputer();
+    return m;
+};
 
 const endRound = (player) => {
     console.log("end of round");
@@ -81,10 +77,21 @@ const endRound = (player) => {
     }
 }
 
+let filterCheck = (filled)=> {
+  // trying to subtract values of currently filled squares from the total values on the board to get empty spaces.
+  return gameBoardState.fullBoard - gameBoardState.placement;
+};
+
 const checkWinner = () => {
   playerOne.placement.sort();
   playerTwo.placement.sort();
   gameBoardState.placement.sort();
+  gameBoardState.playerOne = playerOne.placement;
+  gameBoardState.playerTwo = playerTwo.placement;
+  
+
+  //gameBoardState.empty = () => { gameBoardState.empty = gameBoardState.fullBoard.filter() } ;
+
   const checkEvery = (check, target) => target.every(r => check.includes (r)); 
 
       for ( let j=0; j <= winners.key.length; j++ ) {
@@ -132,10 +139,11 @@ const checkWinner = () => {
           gameBoardState.placement.push(Number(selectedBox.id));
           setTimeout(() => {
             computerMove() 
-            }, 1000);
+            }, 500);
           checkWinner();
         }
         else {
+          document.getElementById("promptMe").innerText = "Please choose another square."
           console.log("square already filled");
         }
   }
