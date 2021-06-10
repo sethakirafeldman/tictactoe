@@ -78,12 +78,9 @@ const endRound = (player) => {
 }
 
 let findEmpty = ()=> {
-  for  (let n = 0; n < 8; n++) {
-   console.log(n);
+  for  (let n = 0; n <= 8; n++) {
     if (gameBoardState.fullBoard.includes(gameBoardState.placement[n]) === true) {
-    gameBoardState.empty = gameBoardState.placement[n];  
-    // right now only adds first selection number. 
-
+      gameBoardState.empty = gameBoardState.fullBoard.filter(v => !gameBoardState.placement.includes(v) );
     }
   }  
 };
