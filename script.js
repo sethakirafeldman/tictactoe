@@ -170,14 +170,15 @@ const computerMove = () => {
    const randomMove = (max) => Math.floor(Math.random() * 9 );
    let computerSquare = document.getElementById( randomMove() );
    //let computerSquare = document.getElementById(miniMax());
-    if (computerSquare.innerText === "") { //
-      computerSquare.innerText = playerTwo.marker;
-      playerTwo.placement.push(Number(computerSquare.id));
-      gameBoardState.placement.push(Number(computerSquare.id));
-      checkWinner();
-    }
+      if (computerSquare.innerText === "") { //
+          computerSquare.innerText = playerTwo.marker;
+          playerTwo.placement.push(Number(computerSquare.id));
+          gameBoardState.placement.push(Number(computerSquare.id));
+          checkWinner();
+      }
 
-    else { computerMove() }
+      else { computerMove() 
+      }
 
   }
 
@@ -188,5 +189,10 @@ const computerMove = () => {
   }
 
 }
-  //const miniMax = () => {
+  
+const miniMax = (currBoardState, currMarker) => {
+ // check step7 on
+ // https://www.freecodecamp.org/news/minimax-algorithm-guide-how-to-create-an-unbeatable-ai/
+
+}
         
