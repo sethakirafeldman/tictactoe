@@ -1,3 +1,9 @@
+/* Possible cool features: difficulty select, single player, 2 player 
+light up/ strike-through on win.
+
+*/
+
+
 selectedBox = "";
 let m = "";
 
@@ -14,7 +20,8 @@ const playerTwo = {
 
 const gameBoardState  = {
   placement: [],
-  fullBoard: [0,1,2,3,4,5,6,7,8]
+  fullBoard: [0,1,2,3,4,5,6,7,8],
+  empty: [0,1,2,3,4,5,6,7,8]
 }; 
 
 const winners = {
@@ -99,22 +106,22 @@ const checkWinner = () => {
           
           if (checkEvery(playerOne.placement, winners.key[j]) === true ) {
             endRound(playerOne);
-            //return true;    
+            return gameBoardState.score= -1;    
             }
             
           else if (checkEvery(playerTwo.placement, winners.key[j]) === true) { 
               endRound(playerTwo);
-             // return true;
+              return gameBoardState.score= 1;  
             }
 
           else if (gameBoardState.placement.length === 9) {
                   if (playerOne.status == "" || playerTwo.status == "" ) {
                       endRound();
+                      return gameBoardState.score = 0;  
                   }
             }
 
           else {
-                console.log("errorsaver");
 
           }  
         } 
@@ -191,8 +198,26 @@ const computerMove = () => {
 }
   
 const miniMax = (currBoardState, currMarker) => {
+      for (let n=0; n <= gameBoardState.empty.length; n++){
+          console.log("these are empty "+ gameBoardState.empty[n])
+        //  return gameBoardState.empty[n];
+
+      };
  // check step7 on
  // https://www.freecodecamp.org/news/minimax-algorithm-guide-how-to-create-an-unbeatable-ai/
 
 }
-        
+
+const allTestPlayInfos = [];
+
+const currentTestPlayInfo = {};
+
+
+
+/* for miniMax, it looks like all the algo needs to do is check which moves yield
+ a score of 1 (win for computer) by testing all available moves before placing the marker 
+ 
+ check other TOP code to see if that helps. 
+ 
+ https://github.com/Pety99/tic-tac-toe/blob/main/script.js
+ */
