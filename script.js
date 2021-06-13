@@ -30,6 +30,8 @@ const winners = {
   ],
  };
 
+ let allTestPlayInfos = [];
+ let currentTestPlayInfo = {};
 
 
  // may be cleaner to change variable content whenever the text in gui is updated.
@@ -53,6 +55,9 @@ const generateBoard = () => {
 
     
   };
+
+const checkEvery = (check, target) => target.every (r => check.includes (r) ); 
+
 
 const setComputer = () => {
     playerTwo.type = "computer";
@@ -100,11 +105,11 @@ const checkWinner = () => {
   gameBoardState.playerTwo = playerTwo.placement;
   findEmpty();
 
-  const checkEvery = (check, target) => target.every(r => check.includes (r)); 
+ // const checkEvery = (check, target) => target.every(r => check.includes (r)); 
 
       for ( let j=0; j <= winners.key.length; j++ ) {
           
-          if (checkEvery(playerOne.placement, winners.key[j]) === true ) {
+          if (checkEvery(playerOne.placement, winners.key[j]) === true ) { // maybe if this were a function it would prevent the errors like with findEmpty().
             endRound(playerOne);
             return gameBoardState.score= -1;    
             }
@@ -198,19 +203,27 @@ const computerMove = () => {
 }
   
 const miniMax = (currBoardState, currMarker) => {
-      for (let n=0; n <= gameBoardState.empty.length; n++){
-          console.log("these are empty "+ gameBoardState.empty[n])
-        //  return gameBoardState.empty[n];
+  
+      // trying to reuse checkEvery here to test would be played squares.
+      let i = 0;
+      do {
+        //i++;
+        //console.log(gameBoardState.empty[i]);
+        i++;
+        let testCompMove = gameBoardState.empty[i];
+          if (checkEvery(testCompMove, winners.key[0]) === true  ) {
+              return -1;     
+          }
+         // iterate through winners in real.
+          //if ()
+      } while (i < gameBoardState.empty.length);
 
       };
  // check step7 on
  // https://www.freecodecamp.org/news/minimax-algorithm-guide-how-to-create-an-unbeatable-ai/
 
-}
 
-const allTestPlayInfos = [];
 
-const currentTestPlayInfo = {};
 
 
 
