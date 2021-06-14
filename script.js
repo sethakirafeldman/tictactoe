@@ -56,8 +56,14 @@ const generateBoard = () => {
     
   };
 
-const checkEvery = (check, target) => target.every (r => check.includes (r) ); 
+const checkEvery = (check, target) => target.every( (r) => check.includes(r) ) ; // returns a boolean.
 
+/*const checkEvery = () => {
+    
+     let temp = winners.key.forEach(el => el.includes);
+     temp.includes
+
+}*/
 
 const setComputer = () => {
     playerTwo.type = "computer";
@@ -97,7 +103,7 @@ let findEmpty = ()=> {
   }  
 };
 
-const checkWinner = () => {
+const checkWinner = (placement) => {
   playerOne.placement.sort();
   playerTwo.placement.sort();
   gameBoardState.placement.sort();
@@ -108,7 +114,9 @@ const checkWinner = () => {
  // const checkEvery = (check, target) => target.every(r => check.includes (r)); 
 
       for ( let j=0; j <= winners.key.length; j++ ) {
-          
+          checkEvery(playerOne.placement, winners.key[j]);
+          checkEvery(playerTwo.placement,winners.key[j]);
+
           if (checkEvery(playerOne.placement, winners.key[j]) === true ) { // maybe if this were a function it would prevent the errors like with findEmpty().
             endRound(playerOne);
             return gameBoardState.score= -1;    
@@ -211,9 +219,8 @@ const miniMax = (currBoardState, currMarker) => {
         //console.log(gameBoardState.empty[i]);
         i++;
         let testCompMove = gameBoardState.empty[i];
-          if (checkEvery(testCompMove, winners.key[0]) === true  ) {
-              return -1;     
-          }
+        let compareWinner = winners.key[0];
+        checkEvery(testCompMove, compareWinner);
          // iterate through winners in real.
           //if ()
       } while (i < gameBoardState.empty.length);
