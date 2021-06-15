@@ -56,14 +56,20 @@ const generateBoard = () => {
     
   };
 
-const checkEvery = (check, target) => target.every( (r) => check.includes(r) ) ; // returns a boolean.
+const checkEvery = (placement, key) => key.every( r => placement.includes(r) );
 
-/*const checkEvery = () => {
+ // returns a boolean.
+
+
+/*const checkEvery = (player, winner) => {
+   // console.log("test"+player+winner);
+   //winner is winners.key iteratation
+    winner.includes(player.placement);
     
-     let temp = winners.key.forEach(el => el.includes);
-     temp.includes
+    
+  }*/
 
-}*/
+
 
 const setComputer = () => {
     playerTwo.type = "computer";
@@ -111,15 +117,13 @@ const checkWinner = (placement) => {
   gameBoardState.playerTwo = playerTwo.placement;
   findEmpty();
 
- // const checkEvery = (check, target) => target.every(r => check.includes (r)); 
-
-      for ( let j=0; j <= winners.key.length; j++ ) {
-          checkEvery(playerOne.placement, winners.key[j]);
-          checkEvery(playerTwo.placement,winners.key[j]);
+      for ( let j=0; j < winners.key.length; j++ ) {
+          //checkEvery(playerOne.placement, winners.key[j]);
+          //checkEvery(playerTwo.placement,winners.key[j]);
 
           if (checkEvery(playerOne.placement, winners.key[j]) === true ) { // maybe if this were a function it would prevent the errors like with findEmpty().
-            endRound(playerOne);
-            return gameBoardState.score= -1;    
+              endRound(playerOne);
+              return gameBoardState.score= -1;    
             }
             
           else if (checkEvery(playerTwo.placement, winners.key[j]) === true) { 
