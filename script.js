@@ -116,9 +116,6 @@ const checkWinner = (placement) => {
   findEmpty();
 
       for ( let j=0; j < winners.key.length; j++ ) {
-          //checkEvery(playerOne.placement, winners.key[j]);
-          //checkEvery(playerTwo.placement,winners.key[j]);
-
           if (checkEvery(playerOne.placement, winners.key[j]) === true ) { // maybe if this were a function it would prevent the errors like with findEmpty().
               endRound(playerOne);
               return gameBoardState.score= -1;    
@@ -213,12 +210,20 @@ const computerMove = () => {
 }
   
 const miniMax = () => {
-        for (let i=0; i < gameBoardState.empty.length; i++) {
-        
-        checkEvery(gameBoardState.empty, winners.key[0]);
+        for (let i=0; i < winners.key.length * playerTwo.placement.length; i++) {
+            for (let j=0; j < playerTwo.placement.length; j++) {
+                if (winners.key[i].includes(playerTwo.placement[j]) === true ) {
+                    console.log(winners.key[i] + " "+ playerTwo.placement[j]);
+                    let testPlay = winners.key[i].forEach((item, index)=> {
+                                  console.log(item,index +"foreach");
+                                  // this grabs each potential move for playerTwo.
+                                  })
+                  
+                }
+
         // has find next empty cell that brings closer to matching a winning array. 
-        console.log("minimaxtest");
         } 
+            }
       
 
       };
@@ -232,8 +237,5 @@ const miniMax = () => {
 
 /* for miniMax, it looks like all the algo needs to do is check which moves yield
  a score of 1 (win for computer) by testing all available moves before placing the marker 
- 
- check other TOP code to see if that helps. 
- 
- https://github.com/Pety99/tic-tac-toe/blob/main/script.js
+
  */
