@@ -52,9 +52,7 @@ const generateBoard = () => {
     document.getElementById("selectO").addEventListener('click', () => {
       setMarker(m="O"); 
     });
-
-    
-  };
+ };
 
 const checkEvery = (placement, key) => key.every( r => placement.includes(r) );
 
@@ -214,20 +212,14 @@ const computerMove = () => {
 
 }
   
-const miniMax = (currBoardState, currMarker) => {
-  
-      // trying to reuse checkEvery here to test would be played squares.
-      let i = 0;
-      do {
-        //i++;
-        //console.log(gameBoardState.empty[i]);
-        i++;
-        let testCompMove = gameBoardState.empty[i];
-        let compareWinner = winners.key[0];
-        checkEvery(testCompMove, compareWinner);
-         // iterate through winners in real.
-          //if ()
-      } while (i < gameBoardState.empty.length);
+const miniMax = () => {
+        for (let i=0; i < gameBoardState.empty.length; i++) {
+        
+        checkEvery(gameBoardState.empty, winners.key[0]);
+        // has find next empty cell that brings closer to matching a winning array. 
+        console.log("minimaxtest");
+        } 
+      
 
       };
  // check step7 on
