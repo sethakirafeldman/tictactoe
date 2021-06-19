@@ -7,6 +7,18 @@ light up/ strike-through on win.
 selectedBox = "";
 let m = "";
 
+//factory function to create each player. have to refactor code to make this work.
+// create new brach to refactor.
+
+const createPlayer = (type, placement, status, marker) => {
+  let testMessage = () => console.log(`new ${player.type} created`);
+    return {
+      type, placement, status, marker  
+
+    };
+
+};
+
 const playerOne = { 
   placement: placement = [],
   status: ""
@@ -56,22 +68,9 @@ const generateBoard = () => {
 
 const checkEvery = (placement, key) => key.every( r => placement.includes(r) );
 
- // returns a boolean.
-
-
-/*const checkEvery = (player, winner) => {
-   // console.log("test"+player+winner);
-   //winner is winners.key iteratation
-    winner.includes(player.placement);
-    
-    
-  }*/
-
-
-
 const setComputer = () => {
     playerTwo.type = "computer";
-
+    //createPlayer("computer","","","");
     if (m === "X") {
       playerTwo.marker = "O";
     }
