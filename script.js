@@ -88,13 +88,31 @@ const setMarker = (m) => {
 };
 
 const endRound = (player) => {
-    console.log("end of round");
+    let promptMe = document.getElementById("promptMe");
+    // console.log("end of round");
     if (player === playerOne || player === playerTwo) {
       player.status = "winner"
-      document.getElementById("promptMe").innerText= player.type +" wins!";
+      promptMe.innerHTML= "The " + player.type +" wins!" +'<br>';
+      //play again?
+      let btn= document.createElement("button");
+      btn.innerText = "Play Again";
+      btn.addEventListener("click", () => {
+        location.reload();
+      });
+      btn.classList.add("marker-button");
+      promptMe.appendChild(btn);    
     }
     else if (playerOne.status == "" || playerTwo.status == "") {
-      document.getElementById("promptMe").innerText= "Stalemate! No one wins.";
+      promptMe.innerHTML= "Stalemate! No one wins." +'<br>';
+      //play again?
+      
+      let btn= document.createElement("button");
+      btn.innerText = "Play Again";
+      btn.addEventListener("click", () => {
+        location.reload();
+      });
+      promptMe.appendChild(btn);      
+
     }
 }
 
@@ -163,11 +181,10 @@ const checkWinner = (placement) => {
         }
         else {
           document.getElementById("promptMe").innerText = "Please choose another square."
-          console.log("square already filled");
+          // console.log("square already filled");
         }
   }
      
-
     else {
       alert("please select a marker");
     }
@@ -179,7 +196,7 @@ const checkWinner = (placement) => {
       let moveCheck = winners.key[l];
       console.log(moveCheck);
       return Math.floor(Math.random() * 6 );
-  } // trying to make computer calculate move.
+  }
 }
 
 const computerMove = () => {
@@ -188,7 +205,7 @@ const computerMove = () => {
    const randomMove = (max) => Math.floor(Math.random() * 9 );
    let computerSquare = document.getElementById( randomMove() );
    //let computerSquare = document.getElementById(miniMax());
-      if (computerSquare.innerText === "") { //
+      if (computerSquare.innerText === "") { 
           computerSquare.innerText = playerTwo.marker;
           playerTwo.placement.push(Number(computerSquare.id));
           gameBoardState.placement.push(Number(computerSquare.id));
@@ -201,31 +218,29 @@ const computerMove = () => {
   }
 
   else { 
-    
-    console.log("Game over, computer move cancelled.")
-
+    // console.log("Game over, computer move cancelled.")
   }
 
 }
   
-const miniMax = () => {
-        for (let i=0; i < winners.key.length * playerTwo.placement.length; i++) {
-            for (let j=0; j < playerTwo.placement.length; j++) {
-                if (winners.key[i].includes(playerTwo.placement[j]) === true ) {
-                    console.log(winners.key[i] + " "+ playerTwo.placement[j]);
-                    let testPlay = winners.key[i].forEach((item, index)=> {
-                                  console.log(item,index +"foreach");
-                                  // this grabs each potential move for playerTwo.
-                                  })
+// const miniMax = () => {
+//         for (let i=0; i < winners.key.length * playerTwo.placement.length; i++) {
+//             for (let j=0; j < playerTwo.placement.length; j++) {
+//                 if (winners.key[i].includes(playerTwo.placement[j]) === true ) {
+//                     // console.log(winners.key[i] + " "+ playerTwo.placement[j]);
+//                     let testPlay = winners.key[i].forEach((item, index)=> {
+//                                   // console.log(item,index +"foreach");
+//                                   // this grabs each potential move for playerTwo.
+//                                   })
                   
-                }
+//                 }
 
-        // has find next empty cell that brings closer to matching a winning array. 
-        } 
-            }
+//         // has find next empty cell that brings closer to matching a winning array. 
+//         } 
+//             }
       
 
-      };
+//       };
  // check step7 on
  // https://www.freecodecamp.org/news/minimax-algorithm-guide-how-to-create-an-unbeatable-ai/
 
