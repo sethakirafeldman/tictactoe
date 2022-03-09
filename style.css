@@ -9,14 +9,13 @@ body {
     width: 600px;
     height: 600px;
     margin: auto;
-    padding: 5%;
+    padding: 1%;
     grid-template: repeat(3, 1fr) / repeat(3, 1fr) ;
     border: 6px;
 }
 
 h1 {
     text-align: center;
-
 }
 
 .box {
