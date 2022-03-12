@@ -1,9 +1,3 @@
-/* Possible cool features: difficulty select, single player, 2 player 
-light up/ strike-through on win.
-
-*/
-
-
 selectedBox = "";
 let m = "";
 
@@ -14,7 +8,6 @@ const createPlayer = (type, placement, status, marker) => {
   let testMessage = () => console.log(`new ${player.type} created`);
     return {
       type, placement, status, marker  
-
     };
 
 };
@@ -27,7 +20,6 @@ const playerOne = {
 const playerTwo = { 
   placement: placement = [],
   status: ""
-
 };
 
 const gameBoardState  = {
@@ -44,9 +36,6 @@ const winners = {
 
  let allTestPlayInfos = [];
  let currentTestPlayInfo = {};
-
-
- // may be cleaner to change variable content whenever the text in gui is updated.
 
 const generateBoard = () => {
 
@@ -70,7 +59,6 @@ const checkEvery = (placement, key) => key.every( r => placement.includes(r) );
 
 const setComputer = () => {
     playerTwo.type = "computer";
-    //createPlayer("computer","","","");
     if (m === "X") {
       playerTwo.marker = "O";
     }
@@ -78,6 +66,7 @@ const setComputer = () => {
       playerTwo.marker = "X" 
     };
 }
+
 const setMarker = (m) => {
     document.querySelectorAll(".marker-button").className="hide-button";
     document.getElementById("promptMe").innerText = `You have chosen ${m}`;
@@ -89,7 +78,6 @@ const setMarker = (m) => {
 
 const endRound = (player) => {
     let promptMe = document.getElementById("promptMe");
-    // console.log("end of round");
     if (player === playerOne || player === playerTwo) {
       player.status = "winner"
       promptMe.innerHTML= "The " + player.type +" wins!" +'<br>';
@@ -176,7 +164,7 @@ const checkWinner = (placement) => {
           gameBoardState.placement.push(Number(selectedBox.id));
           setTimeout(() => {
             computerMove() 
-            }, 500);
+            }, 200);
           checkWinner();
         }
         else {
@@ -191,13 +179,13 @@ const checkWinner = (placement) => {
 
  }
 
- const calculatedMove = () => {
-  for (let l = 0; i < winners.key.length; l++) {
-      let moveCheck = winners.key[l];
-      console.log(moveCheck);
-      return Math.floor(Math.random() * 6 );
-  }
-}
+//  const calculatedMove = () => {
+//   for (let l = 0; i < winners.key.length; l++) {
+//       let moveCheck = winners.key[l];
+//       console.log(moveCheck);
+//       return Math.floor(Math.random() * 6 );
+//   }
+// }
 
 const computerMove = () => {
   if (playerTwo.status == "" && playerOne.status == "") {
@@ -241,15 +229,4 @@ const computerMove = () => {
       
 
 //       };
- // check step7 on
- // https://www.freecodecamp.org/news/minimax-algorithm-guide-how-to-create-an-unbeatable-ai/
 
-
-
-
-
-
-/* for miniMax, it looks like all the algo needs to do is check which moves yield
- a score of 1 (win for computer) by testing all available moves before placing the marker 
-
- */
